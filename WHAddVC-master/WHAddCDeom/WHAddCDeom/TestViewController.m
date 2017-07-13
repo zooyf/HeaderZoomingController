@@ -51,7 +51,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.navigationItem.titleView.alpha = 0;
+    self.navigationItem.titleView.alpha = self.naviBarAlpha;
     self.navigationItem.titleView.hidden = NO;
 }
 
