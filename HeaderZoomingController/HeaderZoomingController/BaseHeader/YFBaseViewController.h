@@ -17,6 +17,11 @@
 @property (nonatomic, readonly, assign) BOOL finishLayoutSubviews;
 
 /**
+ 使用渐变导航栏
+ */
+@property (nonatomic, assign) BOOL gradBarColorEnabled;
+
+/**
  顶部图片大小,默认200
  */
 @property (nonatomic, assign) CGFloat headerHeight;

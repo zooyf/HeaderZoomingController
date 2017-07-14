@@ -32,6 +32,7 @@
         YFBaseViewController *baseVC = (YFBaseViewController *)segue.destinationViewController;
         baseVC.title = @"Hello YF";
         baseVC.headerHeight = 300;
+        baseVC.gradBarColorEnabled = YES;
     }
     
 }

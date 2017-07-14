@@ -33,6 +33,12 @@
     
     cell.textLabel.text = [NSString stringWithFormat:@"Cell%ld", indexPath.row];
     
+    if (indexPath.row == 4) {
+        cell.contentView.backgroundColor = [UIColor redColor];
+    } else {
+        cell.contentView.backgroundColor = [UIColor blueColor];
+    }
+    
     return cell;
 }
 

@@ -8,6 +8,7 @@
 
 #import "YFBaseViewController.h"
 #import "YFNavView.h"
+#import "Masonry.h"
 
 @interface YFBaseViewController ()
 @property (nonatomic, assign) BOOL finishLayoutSubviews;
@@ -22,6 +23,7 @@
 
 @implementation YFBaseViewController
 
+#pragma mark getters
 - (CGFloat)headerHeight {
     if (!_headerHeight) {
         _headerHeight = 200;
@@ -31,22 +33,35 @@
 
 - (YFNavView *)navView {
     if (nil == _navView) {
-        YFNavView *naviBarView = [[YFNavView alloc] initWithFrame:CGRectMake(0, -64, [UIScreen mainScreen].bounds.size.width, 64)];
+        CGFloat naviBarY = self.edgesForExtendedLayout != UIRectEdgeNone ? 0 : -64;
+        YFNavView *naviBarView = [YFNavView new];
         _navView = naviBarView;
+        _navView.alpha = 0;
         [self.view addSubview:naviBarView];
+        [_navView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.leading.trailing.equalTo(self.view);
+            make.top.equalTo(self.view.mas_top).with.offset(naviBarY);
+            make.height.equalTo(@(64));
+        }];
     }
     return _navView;
 }
 
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
-        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width*0.6, 40)];
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.textColor = [UIColor colorWithWhite:0.3 alpha:1];
         titleLabel.hidden = YES;
+        titleLabel.text = self.title;
         _titleLabel = titleLabel;
     }
     return _titleLabel;
+}
+
+#pragma mark setters
+- (void)setTitle:(NSString *)title {
+    self.titleLabel.text = title;
 }
 
 - (void)setNaviBarAlpha:(CGFloat)naviBarAlpha {
@@ -56,19 +71,19 @@
 
 - (void)setBarRenderValue:(CGFloat)barRenderValue {
     _barRenderValue = barRenderValue;
+    
+    // calculate the renderColor
     UIColor *renderColor = [UIColor colorWithWhite:barRenderValue alpha:1];
+    
+    // apply the renderColor
     [self.navigationController.navigationBar setTintColor:renderColor];
-    UILabel *titleLabel = (UILabel *)self.navigationItem.titleView;
-    titleLabel.alpha = 1 - _barRenderValue;
-    titleLabel.textColor = renderColor;
+    self.titleLabel.alpha = 1 - _barRenderValue;
+    self.titleLabel.textColor = renderColor;
 }
 
-- (void)setTitle:(NSString *)title {
-    self.titleLabel.text = title;
-}
-
+#pragma mark core method to calculate and apply the alpha
 - (void)updateNavBarAlpha:(CGPoint)currentPoint {
-    if (!self.finishLayoutSubviews) {
+    if (!self.finishLayoutSubviews || !self.gradBarColorEnabled) {
         return;
     }
     
@@ -78,21 +93,28 @@
         self.barRenderValue = 1 - ratio;
     }
     
+    self.titleLabel.hidden = ratio < 0.25;
     NSLog(@"%.2f", currentPoint.y);
     NSLog(@"ratio:%.2f", ratio);
 }
 
 - (void)setInit {
-    self.view.backgroundColor = [UIColor whiteColor];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
-    self.navigationItem.titleView = self.titleLabel;
-    self.barRenderValue = 1;
+    if (self.gradBarColorEnabled) {
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+        [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+        
+        self.navigationItem.titleView = self.titleLabel;
+        
+        self.barRenderValue = 1;
+        
+    } else {
+    }
     
+    self.view.backgroundColor = [UIColor whiteColor];
     self.finishLayoutSubviews = NO;
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
 }
 
 - (void)viewDidLoad {
@@ -103,10 +125,14 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setTranslucent:self.gradBarColorEnabled];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.navigationItem.titleView.alpha = self.naviBarAlpha;
-    self.navigationItem.titleView.hidden = NO;
 }
 
 - (void)viewDidLayoutSubviews {
