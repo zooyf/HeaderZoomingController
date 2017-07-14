@@ -11,16 +11,15 @@
 
 @interface YFBaseViewController : UIViewController
 
-@property (nonatomic, assign) CGFloat naviBarAlpha;
-@property (nonatomic, assign) CGFloat barRenderValue;
+/**
+ 布局完成
+ */
+@property (nonatomic, readonly, assign) BOOL finishLayoutSubviews;
 
 /**
  顶部图片大小,默认200
  */
 @property (nonatomic, assign) CGFloat headerHeight;
-
-@property (nonatomic, weak) YFNavView *navView;
-@property (nonatomic, strong) UILabel *titleLabel;
 
 - (void)updateNavBarAlpha:(CGPoint)currentPoint;
 

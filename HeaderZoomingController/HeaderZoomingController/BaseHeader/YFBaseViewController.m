@@ -10,6 +10,13 @@
 #import "YFNavView.h"
 
 @interface YFBaseViewController ()
+@property (nonatomic, assign) BOOL finishLayoutSubviews;
+
+@property (nonatomic, weak) YFNavView *navView;
+@property (nonatomic, strong) UILabel *titleLabel;
+
+@property (nonatomic, assign) CGFloat naviBarAlpha;
+@property (nonatomic, assign) CGFloat barRenderValue;
 
 @end
 
@@ -24,7 +31,7 @@
 
 - (YFNavView *)navView {
     if (nil == _navView) {
-        YFNavView *naviBarView = [[YFNavView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 64)];
+        YFNavView *naviBarView = [[YFNavView alloc] initWithFrame:CGRectMake(0, -64, [UIScreen mainScreen].bounds.size.width, 64)];
         _navView = naviBarView;
         [self.view addSubview:naviBarView];
     }
@@ -36,7 +43,6 @@
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.textColor = [UIColor colorWithWhite:0.3 alpha:1];
-        titleLabel.text = @"TEST";
         titleLabel.hidden = YES;
         _titleLabel = titleLabel;
     }
@@ -57,14 +63,23 @@
     titleLabel.textColor = renderColor;
 }
 
+- (void)setTitle:(NSString *)title {
+    self.titleLabel.text = title;
+}
+
 - (void)updateNavBarAlpha:(CGPoint)currentPoint {
-    
-    CGFloat ratio = -(currentPoint.y - 64) / (self.headerHeight - 64);
-    
-    if (currentPoint.y<self.headerHeight) {
-        self.naviBarAlpha =  1 - ratio;
-        self.barRenderValue = ratio;
+    if (!self.finishLayoutSubviews) {
+        return;
     }
+    
+    CGFloat ratio = currentPoint.y / (self.headerHeight - 64);
+    if (currentPoint.y<self.headerHeight) {
+        self.naviBarAlpha = ratio;
+        self.barRenderValue = 1 - ratio;
+    }
+    
+    NSLog(@"%.2f", currentPoint.y);
+    NSLog(@"ratio:%.2f", ratio);
 }
 
 - (void)setInit {
@@ -74,6 +89,10 @@
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
     self.navigationItem.titleView = self.titleLabel;
     self.barRenderValue = 1;
+    
+    self.finishLayoutSubviews = NO;
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 - (void)viewDidLoad {
@@ -88,6 +107,11 @@
     [super viewDidAppear:animated];
     self.navigationItem.titleView.alpha = self.naviBarAlpha;
     self.navigationItem.titleView.hidden = NO;
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    self.finishLayoutSubviews = YES;
 }
 
 @end

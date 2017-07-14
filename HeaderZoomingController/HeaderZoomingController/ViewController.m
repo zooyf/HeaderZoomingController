@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "YFBaseViewController.h"
 
 @interface ViewController ()
 
@@ -25,5 +26,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.destinationViewController isKindOfClass:[YFBaseViewController class]]) {
+        YFBaseViewController *baseVC = (YFBaseViewController *)segue.destinationViewController;
+        baseVC.title = @"Hello YF";
+        baseVC.headerHeight = 300;
+    }
+    
+}
 
 @end
