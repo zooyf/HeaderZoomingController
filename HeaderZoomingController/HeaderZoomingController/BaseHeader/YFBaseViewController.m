@@ -9,7 +9,7 @@
 #import "YFBaseViewController.h"
 #import "YFNavView.h"
 
-@interface YFBaseViewController () <UIScrollViewDelegate>
+@interface YFBaseViewController ()
 
 @end
 
@@ -88,10 +88,6 @@
     [super viewDidAppear:animated];
     self.navigationItem.titleView.alpha = self.naviBarAlpha;
     self.navigationItem.titleView.hidden = NO;
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self updateNavBarAlpha:scrollView.contentOffset];
 }
 
 @end

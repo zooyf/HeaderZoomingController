@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5E3331D71F1774850080E01B /* YFBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3331D61F1774850080E01B /* YFBaseViewController.m */; };
+		5E3331DA1F186DC90080E01B /* SubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3331D91F186DC90080E01B /* SubViewController.m */; };
 		5E6E32811F14C7AC00927D1B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6E32801F14C7AC00927D1B /* main.m */; };
 		5E6E32841F14C7AC00927D1B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6E32831F14C7AC00927D1B /* AppDelegate.m */; };
 		5E6E32871F14C7AC00927D1B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6E32861F14C7AC00927D1B /* ViewController.m */; };
@@ -30,6 +31,8 @@
 /* Begin PBXFileReference section */
 		5E3331D51F1774850080E01B /* YFBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFBaseViewController.h; sourceTree = "<group>"; };
 		5E3331D61F1774850080E01B /* YFBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFBaseViewController.m; sourceTree = "<group>"; };
+		5E3331D81F186DC90080E01B /* SubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubViewController.h; sourceTree = "<group>"; };
+		5E3331D91F186DC90080E01B /* SubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubViewController.m; sourceTree = "<group>"; };
 		5E6E327C1F14C7AC00927D1B /* HeaderZoomingController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeaderZoomingController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E6E32801F14C7AC00927D1B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5E6E32821F14C7AC00927D1B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -105,6 +108,8 @@
 				5E6E32831F14C7AC00927D1B /* AppDelegate.m */,
 				5E6E32851F14C7AC00927D1B /* ViewController.h */,
 				5E6E32861F14C7AC00927D1B /* ViewController.m */,
+				5E3331D81F186DC90080E01B /* SubViewController.h */,
+				5E3331D91F186DC90080E01B /* SubViewController.m */,
 				5E6E32881F14C7AC00927D1B /* Main.storyboard */,
 				5E6E328B1F14C7AC00927D1B /* Assets.xcassets */,
 				5E6E328D1F14C7AC00927D1B /* LaunchScreen.storyboard */,
@@ -244,6 +249,7 @@
 				5E6E32BD1F14CA6500927D1B /* ViewController+MASAdditions.m in Sources */,
 				5E6E32B71F14CA6500927D1B /* MASLayoutConstraint.m in Sources */,
 				5E3331D71F1774850080E01B /* YFBaseViewController.m in Sources */,
+				5E3331DA1F186DC90080E01B /* SubViewController.m in Sources */,
 				5E6E32C01F14CEC300927D1B /* YFNavView.m in Sources */,
 				5E6E32BA1F14CA6500927D1B /* NSArray+MASAdditions.m in Sources */,
 				5E6E32B91F14CA6500927D1B /* MASViewConstraint.m in Sources */,

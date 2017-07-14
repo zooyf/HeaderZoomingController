@@ -38,10 +38,10 @@
             </objects>
             <point key="canvasLocation" x="1079.2" y="138.98050974512745"/>
         </scene>
-        <!--Base View Controller-->
+        <!--Sub View Controller-->
         <scene sceneID="20B-jg-55a">
             <objects>
-                <viewController id="RP6-KY-d6r" customClass="YFBaseViewController" sceneMemberID="viewController">
+                <viewController id="RP6-KY-d6r" customClass="SubViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Chz-mQ-0BM"/>
                         <viewControllerLayoutGuide type="bottom" id="I4Z-cf-2Mg"/>
