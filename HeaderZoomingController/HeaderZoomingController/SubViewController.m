@@ -17,7 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"Hello YF";
+    self.headerHeight = 300;
+    self.gradBarColorEnabled = YES;
+
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_dianzan_n"] style:UIBarButtonItemStylePlain target:self action:@selector(favorAction:)];
     // Do any additional setup after loading the view.
 }

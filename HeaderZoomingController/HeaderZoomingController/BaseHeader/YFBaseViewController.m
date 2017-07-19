@@ -116,6 +116,13 @@
     
 }
 
+- (void)setGradBarColorEnabled:(BOOL)gradBarColorEnabled {
+    _gradBarColorEnabled = gradBarColorEnabled;
+    if (gradBarColorEnabled) {
+        [self setInit];
+    }
+}
+
 #pragma mark view life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];

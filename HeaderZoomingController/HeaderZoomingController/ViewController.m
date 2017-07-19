@@ -27,14 +27,7 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    if ([segue.destinationViewController isKindOfClass:[YFBaseViewController class]]) {
-        YFBaseViewController *baseVC = (YFBaseViewController *)segue.destinationViewController;
-        baseVC.title = @"Hello YF";
-        baseVC.headerHeight = 300;
-        baseVC.gradBarColorEnabled = YES;
-    }
-    
+        
 }
 
 @end
