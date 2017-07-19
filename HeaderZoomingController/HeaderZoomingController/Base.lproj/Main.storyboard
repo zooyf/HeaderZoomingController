@@ -22,9 +22,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBM-Sd-agn">
-                                <rect key="frame" x="16" y="91" width="77" height="30"/>
+                                <rect key="frame" x="22" y="91" width="66" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="to ScrollVC"/>
+                                <state key="normal" title="favor点赞"/>
                                 <connections>
                                     <segue destination="RP6-KY-d6r" kind="show" id="Q55-nF-SKr"/>
                                 </connections>
@@ -220,7 +220,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uzg-fL-tOz"/>
+        <segue reference="WWy-BP-sg9"/>
         <segue reference="4Kd-41-gjl"/>
     </inferredMetricsTieBreakers>
 </document>

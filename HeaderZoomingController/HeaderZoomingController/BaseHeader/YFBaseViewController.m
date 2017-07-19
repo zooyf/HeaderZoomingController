@@ -111,14 +111,16 @@
     }
     
     self.view.backgroundColor = [UIColor whiteColor];
-    self.finishLayoutSubviews = NO;
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
 }
 
+#pragma mark view life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.finishLayoutSubviews = NO;
     
     [self setInit];
     
@@ -128,6 +130,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setTranslucent:self.gradBarColorEnabled];
+    self.naviBarAlpha = self.naviBarAlpha;
+    self.barRenderValue = self.barRenderValue;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
