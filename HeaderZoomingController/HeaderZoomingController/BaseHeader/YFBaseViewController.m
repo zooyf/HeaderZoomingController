@@ -10,7 +10,7 @@
 #import "YFNavView.h"
 #import "Masonry.h"
 
-@interface YFBaseViewController ()
+@interface YFBaseViewController () <UIGestureRecognizerDelegate>
 @property (nonatomic, assign) BOOL finishLayoutSubviews;
 
 @property (nonatomic, weak) YFNavView *navView;
@@ -26,7 +26,7 @@
 #pragma mark getters
 - (CGFloat)headerHeight {
     if (!_headerHeight) {
-        _headerHeight = 200;
+        _headerHeight = ScreenWidth/2.0;
     }
     return _headerHeight;
 }
@@ -51,9 +51,8 @@
     if (!_titleLabel) {
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width*0.6, 40)];
         titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.textColor = [UIColor colorWithWhite:0.3 alpha:1];
-        titleLabel.hidden = YES;
         titleLabel.text = self.title;
+        titleLabel.font = [UIFont systemFontOfSize:15];
         _titleLabel = titleLabel;
     }
     return _titleLabel;
@@ -73,6 +72,8 @@
 - (void)setBarRenderValue:(CGFloat)barRenderValue {
     _barRenderValue = barRenderValue;
     
+    [self setNaviBarAlpha:1 - barRenderValue];
+    
     // calculate the renderColor
     UIColor *renderColor = [UIColor colorWithWhite:barRenderValue alpha:1];
     
@@ -80,6 +81,13 @@
     [self.navigationController.navigationBar setTintColor:renderColor];
     self.titleLabel.alpha = 1 - _barRenderValue;
     self.titleLabel.textColor = renderColor;
+}
+
+- (void)setGradBarColorEnabled:(BOOL)gradBarColorEnabled {
+    _gradBarColorEnabled = gradBarColorEnabled;
+    if (gradBarColorEnabled) {
+        self.navigationItem.titleView = self.titleLabel;
+    }
 }
 
 #pragma mark core method to calculate and apply the alpha
@@ -90,8 +98,7 @@
     
     CGFloat ratio = currentPoint.y / (self.headerHeight - 64);
     if (currentPoint.y<self.headerHeight) {
-        self.naviBarAlpha = ratio;
-        self.barRenderValue = 1 - ratio;
+        [self setBarRenderValue:1 - ratio];
     }
     
     self.titleLabel.hidden = ratio < 0.25;
@@ -100,16 +107,30 @@
 }
 
 - (void)setInit {
-    if (self.gradBarColorEnabled) {
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-        [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    
+    // 单机键盘消失
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self.view action:@selector(endEditing:)];
+    [tap setCancelsTouchesInView:NO];
+    [self.view addGestureRecognizer:tap];
+    
+    if (![self isRootViewController]) {
+        // 当前控制器不是navigation.rootViewController
+        // 添加返回按钮
+        // 允许右划返回
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back_white"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+        self.navigationController.interactivePopGestureRecognizer.delegate = self;
         
-        self.navigationItem.titleView = self.titleLabel;
-        
-        self.barRenderValue = 1;
-        
-    } else {
+    } else if (self.showBackBtn) {
+        // 是根视控制器 并且要显示返回按钮(应该为present出的控制器)
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back_white"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
     }
+    
+    self.finishLayoutSubviews = NO;
+    [self.navigationController.navigationBar setTranslucent:YES];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15], NSForegroundColorAttributeName: [UIColor blackColor]}];
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -117,18 +138,31 @@
     
 }
 
-- (void)setGradBarColorEnabled:(BOOL)gradBarColorEnabled {
-    _gradBarColorEnabled = gradBarColorEnabled;
-    if (gradBarColorEnabled) {
-        [self setInit];
+#pragma mark other
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
+}
+
+- (BOOL)isRootViewController {
+    // 判断当前控制器是否是根控制器
+    NSArray *viewControllers = self.navigationController.viewControllers;
+    UIViewController *rootViewController = viewControllers.firstObject;
+    
+    return self == rootViewController;
+}
+
+- (void)backAction {
+    if ([self isRootViewController]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
 #pragma mark view life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.finishLayoutSubviews = NO;
     
     [self setInit];
     
@@ -137,19 +171,17 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController.navigationBar setTranslucent:self.gradBarColorEnabled];
-    self.naviBarAlpha = self.naviBarAlpha;
-    self.barRenderValue = self.barRenderValue;
+    [self setBarRenderValue:self.barRenderValue];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    self.navigationItem.titleView.alpha = self.naviBarAlpha;
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     self.finishLayoutSubviews = YES;
+    [self setBarRenderValue:self.gradBarColorEnabled ? (self.barRenderValue ? : 1) : 0];
 }
 
 @end

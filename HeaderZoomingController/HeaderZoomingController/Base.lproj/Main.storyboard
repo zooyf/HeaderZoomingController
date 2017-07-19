@@ -185,7 +185,7 @@
         <!--View Controller-->
         <scene sceneID="kD4-HS-8qt">
             <objects>
-                <viewController id="rbt-pg-u0h" sceneMemberID="viewController">
+                <viewController id="rbt-pg-u0h" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7xk-yp-nZb"/>
                         <viewControllerLayoutGuide type="bottom" id="Jh5-3e-ZPF"/>
@@ -220,7 +220,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="cnU-rz-g5O"/>
         <segue reference="WWy-BP-sg9"/>
-        <segue reference="4Kd-41-gjl"/>
     </inferredMetricsTieBreakers>
 </document>

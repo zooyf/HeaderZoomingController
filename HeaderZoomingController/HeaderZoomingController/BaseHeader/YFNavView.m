@@ -24,6 +24,8 @@
     
     UIBezierPath *linePath = [UIBezierPath bezierPath];
     
+    [linePath setLineWidth:0.3];
+    
     [linePath moveToPoint:CGPointMake(0, lineY)];
     
     [linePath addLineToPoint:CGPointMake(rect.size.width, lineY)];

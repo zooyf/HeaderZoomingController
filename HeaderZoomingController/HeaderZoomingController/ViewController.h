@@ -6,9 +6,9 @@
 //  Copyright © 2017年 JasonYu. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "YFBaseViewController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : YFBaseViewController
 
 
 @end

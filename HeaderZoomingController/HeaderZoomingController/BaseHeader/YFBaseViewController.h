@@ -9,8 +9,22 @@
 #import <UIKit/UIKit.h>
 @class YFNavView;
 
+#define ScreenHeight [[UIScreen mainScreen] bounds].size.height
+#define ScreenWidth [[UIScreen mainScreen] bounds].size.width
+
 @interface YFBaseViewController : UIViewController
 
+/**
+ 显示返回按钮，只有根视图控制器的时候才使用此属性
+ */
+@property (nonatomic, assign) BOOL showBackBtn;
+
+/**
+ 点击左上角返回按钮执行的方法，重写以达到自己的目的
+ */
+- (void)backAction;
+
+#pragma mark 渐变导航栏属性方法
 /**
  布局是否完成.在viewDidLayoutSubviews()执行完毕后设置为true
  */
