@@ -62,6 +62,7 @@
 #pragma mark setters
 - (void)setTitle:(NSString *)title {
     self.titleLabel.text = title;
+    self.navigationItem.title = title;
 }
 
 - (void)setNaviBarAlpha:(CGFloat)naviBarAlpha {
