@@ -11,6 +11,9 @@
 @interface SubViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, assign) BOOL favor;
+
+@property (weak, nonatomic) IBOutlet UIView *floatView;
+
 @end
 
 @implementation SubViewController
@@ -43,6 +46,15 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self updateNavBarAlpha:scrollView.contentOffset];
+    if (scrollView.contentOffset.y >= self.headerHeight-64) {
+        if (self.floatView.hidden) {
+            self.floatView.hidden = NO;
+        }
+    } else {
+        if (!self.floatView.hidden) {
+            self.floatView.hidden = YES;
+        }
+    }
 }
 
 @end
