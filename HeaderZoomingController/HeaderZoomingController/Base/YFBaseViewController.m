@@ -11,6 +11,9 @@
 #import "Masonry.h"
 
 @interface YFBaseViewController () <UIGestureRecognizerDelegate>
+
+#pragma mark ------- 透明渐变导航栏 -------
+#pragma mark ------- Transparent gradColor navigation bar -------
 @property (nonatomic, assign) BOOL finishLayoutSubviews;
 
 @property (nonatomic, weak) YFNavView *navView;
@@ -109,20 +112,21 @@
 - (void)setInit {
     
     // 单机键盘消失
+    // tap to dismiss keyboard
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self.view action:@selector(endEditing:)];
     [tap setCancelsTouchesInView:NO];
     [self.view addGestureRecognizer:tap];
     
     if (![self isRootViewController]) {
-        // 当前控制器不是navigation.rootViewController
-        // 添加返回按钮
-        // 允许右划返回
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back_white"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+        // 当前控制器不是navigation.rootViewController，添加返回按钮，允许又划返回
+        // the current controller isn't navigation.rootViewController. Add custom back button and enable the back gesture.
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back_normal"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
         self.navigationController.interactivePopGestureRecognizer.delegate = self;
         
     } else if (self.showBackBtn) {
         // 是根视控制器 并且要显示返回按钮(应该为present出的控制器)
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back_white"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+        // The current controller isn navigation.rootViewController and showBackBtn=YES. Add the back button Only.
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back_normal"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
     }
     
     self.finishLayoutSubviews = NO;
@@ -144,8 +148,13 @@
     return YES;
 }
 
+/**
+ 判断当前控制器是否是根控制器
+ Specify whether the current controller is the rootViewController.
+
+ @return If the current controller is the rootViewController, return YES. Otherwise NO.
+ */
 - (BOOL)isRootViewController {
-    // 判断当前控制器是否是根控制器
     NSArray *viewControllers = self.navigationController.viewControllers;
     UIViewController *rootViewController = viewControllers.firstObject;
     
@@ -172,10 +181,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self setBarRenderValue:self.barRenderValue];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidLayoutSubviews {

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5E3331D71F1774850080E01B /* YFBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3331D61F1774850080E01B /* YFBaseViewController.m */; };
 		5E3331DA1F186DC90080E01B /* SubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3331D91F186DC90080E01B /* SubViewController.m */; };
 		5E3331DD1F18F5FA0080E01B /* SubTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3331DC1F18F5FA0080E01B /* SubTableViewController.m */; };
 		5E6E32811F14C7AC00927D1B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6E32801F14C7AC00927D1B /* main.m */; };
@@ -26,12 +25,11 @@
 		5E6E32BB1F14CA6500927D1B /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6E32AE1F14CA6500927D1B /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		5E6E32BC1F14CA6500927D1B /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6E32B01F14CA6500927D1B /* View+MASAdditions.m */; };
 		5E6E32BD1F14CA6500927D1B /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6E32B31F14CA6500927D1B /* ViewController+MASAdditions.m */; };
-		5E6E32C01F14CEC300927D1B /* YFNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6E32BF1F14CEC300927D1B /* YFNavView.m */; };
+		5EC2DA0E1F20B0E1002B0C06 /* YFBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC2DA0B1F20B0E1002B0C06 /* YFBaseViewController.m */; };
+		5EC2DA0F1F20B0E1002B0C06 /* YFNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC2DA0D1F20B0E1002B0C06 /* YFNavView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5E3331D51F1774850080E01B /* YFBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFBaseViewController.h; sourceTree = "<group>"; };
-		5E3331D61F1774850080E01B /* YFBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFBaseViewController.m; sourceTree = "<group>"; };
 		5E3331D81F186DC90080E01B /* SubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubViewController.h; sourceTree = "<group>"; };
 		5E3331D91F186DC90080E01B /* SubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubViewController.m; sourceTree = "<group>"; };
 		5E3331DB1F18F5FA0080E01B /* SubTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubTableViewController.h; sourceTree = "<group>"; };
@@ -71,8 +69,10 @@
 		5E6E32B11F14CA6500927D1B /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		5E6E32B21F14CA6500927D1B /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		5E6E32B31F14CA6500927D1B /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
-		5E6E32BE1F14CEC300927D1B /* YFNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFNavView.h; sourceTree = "<group>"; };
-		5E6E32BF1F14CEC300927D1B /* YFNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFNavView.m; sourceTree = "<group>"; };
+		5EC2DA0A1F20B0E1002B0C06 /* YFBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFBaseViewController.h; sourceTree = "<group>"; };
+		5EC2DA0B1F20B0E1002B0C06 /* YFBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFBaseViewController.m; sourceTree = "<group>"; };
+		5EC2DA0C1F20B0E1002B0C06 /* YFNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFNavView.h; sourceTree = "<group>"; };
+		5EC2DA0D1F20B0E1002B0C06 /* YFNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFNavView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,8 +105,7 @@
 		5E6E327E1F14C7AC00927D1B /* HeaderZoomingController */ = {
 			isa = PBXGroup;
 			children = (
-				5E6E329A1F14CA6500927D1B /* Masonry */,
-				5E6E32961F14C95400927D1B /* BaseHeader */,
+				5EC2DA091F20B0E1002B0C06 /* Base */,
 				5E6E32821F14C7AC00927D1B /* AppDelegate.h */,
 				5E6E32831F14C7AC00927D1B /* AppDelegate.m */,
 				5E6E32851F14C7AC00927D1B /* ViewController.h */,
@@ -115,10 +114,7 @@
 				5E3331D91F186DC90080E01B /* SubViewController.m */,
 				5E3331DB1F18F5FA0080E01B /* SubTableViewController.h */,
 				5E3331DC1F18F5FA0080E01B /* SubTableViewController.m */,
-				5E6E32881F14C7AC00927D1B /* Main.storyboard */,
-				5E6E328B1F14C7AC00927D1B /* Assets.xcassets */,
-				5E6E328D1F14C7AC00927D1B /* LaunchScreen.storyboard */,
-				5E6E32901F14C7AC00927D1B /* Info.plist */,
+				5E6E329A1F14CA6500927D1B /* Masonry */,
 				5E6E327F1F14C7AC00927D1B /* Supporting Files */,
 			);
 			path = HeaderZoomingController;
@@ -127,20 +123,13 @@
 		5E6E327F1F14C7AC00927D1B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5E6E32881F14C7AC00927D1B /* Main.storyboard */,
+				5E6E328B1F14C7AC00927D1B /* Assets.xcassets */,
+				5E6E328D1F14C7AC00927D1B /* LaunchScreen.storyboard */,
+				5E6E32901F14C7AC00927D1B /* Info.plist */,
 				5E6E32801F14C7AC00927D1B /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		5E6E32961F14C95400927D1B /* BaseHeader */ = {
-			isa = PBXGroup;
-			children = (
-				5E6E32BE1F14CEC300927D1B /* YFNavView.h */,
-				5E6E32BF1F14CEC300927D1B /* YFNavView.m */,
-				5E3331D51F1774850080E01B /* YFBaseViewController.h */,
-				5E3331D61F1774850080E01B /* YFBaseViewController.m */,
-			);
-			path = BaseHeader;
 			sourceTree = "<group>";
 		};
 		5E6E329A1F14CA6500927D1B /* Masonry */ = {
@@ -173,6 +162,17 @@
 				5E6E32B31F14CA6500927D1B /* ViewController+MASAdditions.m */,
 			);
 			path = Masonry;
+			sourceTree = "<group>";
+		};
+		5EC2DA091F20B0E1002B0C06 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				5EC2DA0A1F20B0E1002B0C06 /* YFBaseViewController.h */,
+				5EC2DA0B1F20B0E1002B0C06 /* YFBaseViewController.m */,
+				5EC2DA0C1F20B0E1002B0C06 /* YFNavView.h */,
+				5EC2DA0D1F20B0E1002B0C06 /* YFNavView.m */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,14 +253,14 @@
 				5E6E32B51F14CA6500927D1B /* MASConstraint.m in Sources */,
 				5E6E32BD1F14CA6500927D1B /* ViewController+MASAdditions.m in Sources */,
 				5E6E32B71F14CA6500927D1B /* MASLayoutConstraint.m in Sources */,
-				5E3331D71F1774850080E01B /* YFBaseViewController.m in Sources */,
 				5E3331DA1F186DC90080E01B /* SubViewController.m in Sources */,
-				5E6E32C01F14CEC300927D1B /* YFNavView.m in Sources */,
 				5E6E32BA1F14CA6500927D1B /* NSArray+MASAdditions.m in Sources */,
 				5E6E32B91F14CA6500927D1B /* MASViewConstraint.m in Sources */,
 				5E6E32B81F14CA6500927D1B /* MASViewAttribute.m in Sources */,
+				5EC2DA0E1F20B0E1002B0C06 /* YFBaseViewController.m in Sources */,
 				5E6E32BC1F14CA6500927D1B /* View+MASAdditions.m in Sources */,
 				5E6E32811F14C7AC00927D1B /* main.m in Sources */,
+				5EC2DA0F1F20B0E1002B0C06 /* YFNavView.m in Sources */,
 				5E6E32B41F14CA6500927D1B /* MASCompositeConstraint.m in Sources */,
 				5E6E32BB1F14CA6500927D1B /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				5E3331DD1F18F5FA0080E01B /* SubTableViewController.m in Sources */,

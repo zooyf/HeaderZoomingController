@@ -24,7 +24,7 @@
     self.headerHeight = 300;
     self.gradBarColorEnabled = YES;
 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_dianzan_n"] style:UIBarButtonItemStylePlain target:self action:@selector(favorAction:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_favor_n"] style:UIBarButtonItemStylePlain target:self action:@selector(favorAction:)];
     // Do any additional setup after loading the view.
 }
 
@@ -32,10 +32,10 @@
     _favor = !_favor;
     if (_favor) {
         [barButtonItem setTintColor:[UIColor redColor]];
-        [barButtonItem setImage:[UIImage imageNamed:@"btn_dianzan_h"]];
+        [barButtonItem setImage:[UIImage imageNamed:@"btn_favor_h"]];
     } else {
         [barButtonItem setTintColor:nil];
-        [barButtonItem setImage:[UIImage imageNamed:@"btn_dianzan_n"]];
+        [barButtonItem setImage:[UIImage imageNamed:@"btn_favor_n"]];
     }
 }
 
@@ -46,6 +46,8 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self updateNavBarAlpha:scrollView.contentOffset];
+    
+    // floating view
     if (scrollView.contentOffset.y >= self.headerHeight-64) {
         if (self.floatView.hidden) {
             self.floatView.hidden = NO;

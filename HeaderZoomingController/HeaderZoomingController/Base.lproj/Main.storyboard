@@ -66,7 +66,7 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pI7-ez-yiw">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
-                                                <color key="backgroundColor" red="0.98823529409999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.33725490200000002" green="0.72156862749999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="300" id="d0n-lA-acM"/>
                                                 </constraints>
@@ -121,7 +121,7 @@
                                     <outlet property="delegate" destination="RP6-KY-d6r" id="JIp-dn-jJw"/>
                                 </connections>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixQ-4b-WJ2">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixQ-4b-WJ2">
                                 <rect key="frame" x="0.0" y="64" width="375" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HTN-Mf-dXt">
