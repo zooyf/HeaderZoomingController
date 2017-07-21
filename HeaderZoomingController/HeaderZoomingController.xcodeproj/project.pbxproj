@@ -27,6 +27,7 @@
 		5E6E32BD1F14CA6500927D1B /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6E32B31F14CA6500927D1B /* ViewController+MASAdditions.m */; };
 		5EC2DA0E1F20B0E1002B0C06 /* YFBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC2DA0B1F20B0E1002B0C06 /* YFBaseViewController.m */; };
 		5EC2DA0F1F20B0E1002B0C06 /* YFNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC2DA0D1F20B0E1002B0C06 /* YFNavView.m */; };
+		5EC2DA121F20B532002B0C06 /* UIScrollView+PullBig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC2DA111F20B532002B0C06 /* UIScrollView+PullBig.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,8 @@
 		5EC2DA0B1F20B0E1002B0C06 /* YFBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFBaseViewController.m; sourceTree = "<group>"; };
 		5EC2DA0C1F20B0E1002B0C06 /* YFNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFNavView.h; sourceTree = "<group>"; };
 		5EC2DA0D1F20B0E1002B0C06 /* YFNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFNavView.m; sourceTree = "<group>"; };
+		5EC2DA101F20B532002B0C06 /* UIScrollView+PullBig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+PullBig.h"; sourceTree = "<group>"; };
+		5EC2DA111F20B532002B0C06 /* UIScrollView+PullBig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+PullBig.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +172,8 @@
 			children = (
 				5EC2DA0A1F20B0E1002B0C06 /* YFBaseViewController.h */,
 				5EC2DA0B1F20B0E1002B0C06 /* YFBaseViewController.m */,
+				5EC2DA101F20B532002B0C06 /* UIScrollView+PullBig.h */,
+				5EC2DA111F20B532002B0C06 /* UIScrollView+PullBig.m */,
 				5EC2DA0C1F20B0E1002B0C06 /* YFNavView.h */,
 				5EC2DA0D1F20B0E1002B0C06 /* YFNavView.m */,
 			);
@@ -262,6 +267,7 @@
 				5E6E32811F14C7AC00927D1B /* main.m in Sources */,
 				5EC2DA0F1F20B0E1002B0C06 /* YFNavView.m in Sources */,
 				5E6E32B41F14CA6500927D1B /* MASCompositeConstraint.m in Sources */,
+				5EC2DA121F20B532002B0C06 /* UIScrollView+PullBig.m in Sources */,
 				5E6E32BB1F14CA6500927D1B /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				5E3331DD1F18F5FA0080E01B /* SubTableViewController.m in Sources */,
 			);
